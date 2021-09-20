@@ -1,12 +1,18 @@
 <html>
-<script type="text/javascript">
-	var max = 0;
-	function texts() {
-		max = texts.arguments.length;
-		for (i = 0; i < max; i++) this[i] = texts.arguments[i];
-	}
 
-	var txt = new texts(
+<head>
+	<meta charset="utf-8">
+</head>
+
+<body style="background-color: #000000;">
+	<div id="matrix"
+		style="background-color: #000000; color: #66FF00; font-family: Arial; font-size: 16px; overflow: hidden;" />
+	</textarea>
+	</form>
+</body>
+
+<script type="text/javascript">
+	var txt = [
 		"я жру потому что знаю что артем ржет потому что знает что оля смеется))",
 		"и заведи пару багов, которых нет", "так себе работенка - мыть кукол после секса)))",
 		"так себе работенка - мыть кукол после секса)))",
@@ -18,34 +24,26 @@
 		"в пинки нарушен половой щелочной баланс - вот наушники туда и падают",
 		"Артем уронил наушник в половую щель на терассе пинки-банднски?",
 		"про билд '...в котором как в тебе нет недочетов...'",
-		"...");
+		"..."];
 	var x = 0;
 	var position = 0;
 	var len = txt[0].length;
 
+	let matrix = document.getElementById('matrix');
+
 	function matrix_go() {
-		let matrix = document.getElementById('matrix');
 		matrix.innerHTML = txt[x].substring(0, position) + "_";
 		if (position++ == len) {
 			position = 0;
-			setTimeout("matrix_go();", 2000);
-			if (++x == max) x = 0;
+			setTimeout(matrix_go, 2000);
+			if (++x == txt.length) {
+				x = 0;
+			}
 			len = txt[x].length;
 		}
-		else setTimeout("matrix_go();", 140);
+		else setTimeout(matrix_go, 140);
 	}
-</script>
 
-<head>
-	<meta charset="utf-8">
-</head>
-
-<body style="background-color: #000000;">
-	<div id="matrix" style="background-color: #000000; color: #66FF00; font-family: Arial; font-size: 16px; overflow: hidden;"/>
-</textarea>
-	</form>
-</body>
-<script type="text/javascript">
 	matrix_go();
 </script>
 
